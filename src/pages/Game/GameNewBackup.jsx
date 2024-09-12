@@ -17,10 +17,11 @@ const GameNewBackup = () => {
 
   const handleStart = (e) => {
     e.preventDefault();
-    const gameSize = e.target.colNum.value * e.target.rowNum.value;
+    const gameSize =
+      parseInt(e.target.colNum.value) * parseInt(e.target.rowNum.value);
     setStartingInputs({
-      row: e.target.rowNum.value,
-      col: e.target.colNum.value,
+      row: parseInt(e.target.rowNum.value),
+      col: parseInt(e.target.colNum.value),
       x: e.target.x.value,
       y: e.target.y.value,
       fieldSize: gameSize,
@@ -32,7 +33,7 @@ const GameNewBackup = () => {
   // This part is pretty straightforward, I have a navbar on the top, and below I have the game board itself
   return (
     <div className="mainArea">
-      <Navbar />
+      <Navbar x={startingInputs.x} y={startingInputs.y} />
       {/* ----------------- GAME FIELD ------------------- */}
       {startingInputs.fieldSize > 0 ? (
         <GameField {...startingInputs} />

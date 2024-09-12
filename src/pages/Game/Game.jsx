@@ -110,7 +110,6 @@ const Game = () => {
   // This part is pretty straightforward, I have a navbar on the top, and below I have the game board itself
   return (
     <div className="mainArea">
-      <Navbar />
       {/* ----------------- GAME FIELD ------------------- */}
       <h1 className="gameOverHeader">{winner}</h1>
       <div className="gridField">

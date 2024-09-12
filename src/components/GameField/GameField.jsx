@@ -1,6 +1,8 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const GameField = (startingInputs) => {
+  const cols = startingInputs.col;
   let arr = new Array(startingInputs.fieldSize).fill(" ");
   let winArray = [];
   const [game, setGame] = useState({
@@ -10,7 +12,7 @@ const GameField = (startingInputs) => {
     winner: "",
   });
 
-  const width = startingInputs.col * 60 + "px";
+  const width = cols * 60 + "px";
 
   // Handling cell click eveng
 
@@ -34,6 +36,10 @@ const GameField = (startingInputs) => {
   // It's repetitive for now, once everything is completed I will try to refactor it.
 
   const checkWinCondition = (marks) => {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: "Bearer hkew57zhne345hb3kw-zh65u",
+    };
     // Firstly I'm going through all the cells and check if they contain an "X" or an "O"
     for (let i = 0; i < marks.length; i++) {
       // If branch for 'X' mark
@@ -41,26 +47,81 @@ const GameField = (startingInputs) => {
         // I'm going through the cells first horizontally, then vertically
         // Currently the overflowing lines win as well, will fix it later
         if (
-          (marks[i + 1] === "X" &&
-            marks[i + 2] === "X" &&
-            marks[i + 3] === "X" &&
-            marks[i + 4] === "X") ||
-          (marks[i + 6] === "X" &&
-            marks[i + 12] === "X" &&
-            marks[i + 18] === "X" &&
-            marks[i + 24] === "X") ||
-          (marks[i + 7] === "X" &&
-            marks[i + 14] === "X" &&
-            marks[i + 21] === "X" &&
-            marks[i + 28] === "X") ||
-          (marks[i + 5] === "X" &&
-            marks[i + 10] === "X" &&
-            marks[i + 15] === "X" &&
-            marks[i + 20] === "X")
+          marks[i + 1] === "X" &&
+          marks[i + 2] === "X" &&
+          marks[i + 3] === "X" &&
+          marks[i + 4] === "X"
         ) {
-          // Trying to handle the red background styling of the winning cells, but it doesn't work properly,
-          // will fix later
+          // Trying to handle the red background styling of the winning cells, but it doesn't work properly, will fix later
           winArray.push(i, i + 1, i + 2, i + 3, i + 4);
+          console.log(winArray);
+          setGame({ ...game, winner: "X nyert!", gameOver: true });
+          //const result = { user: startingInputs.x, score: game.counter };
+          const result = { user: "Beni", score: "5" };
+          /* const postResults = async () => {
+            await axios.post({
+              url: "https://eomxihgqom5ex61.m.pipedream.net/result",
+              headers: headers,
+              data: result,
+            });
+          };
+          postResults(); */
+          fetch("https://eomxihgqom5ex61.m.pipedream.net/result", {
+            method: "POST",
+            body: result,
+            headers: {
+              Authorization: "Bearer hkew57zhne345hb3kw-zh65u",
+            },
+          })
+            .then((response) => {
+              console.log(response);
+            })
+            .then((data) => {
+              console.log(data);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        } else if (
+          marks[i + cols] === "X" &&
+          marks[i + cols * 2] === "X" &&
+          marks[i + cols * 3] === "X" &&
+          marks[i + cols * 4] === "X"
+        ) {
+          // Trying to handle the red background styling of the winning cells, but it doesn't work properly, will fix later
+          winArray.push(i, i + cols, i + cols * 2, i + cols * 3, i + cols * 4);
+          console.log(winArray);
+          setGame({ ...game, winner: "X nyert!", gameOver: true });
+        } else if (
+          marks[i + (cols + 1)] === "X" &&
+          marks[i + (cols + 1) * 2] === "X" &&
+          marks[i + (cols + 1) * 3] === "X" &&
+          marks[i + (cols + 1) * 4] === "X"
+        ) {
+          // Trying to handle the red background styling of the winning cells, but it doesn't work properly, will fix later
+          winArray.push(
+            i,
+            i + (cols + 1),
+            i + (cols + 1) * 2,
+            i + (cols + 1) * 3,
+            i + (cols + 1) * 4
+          );
+          console.log(winArray);
+          setGame({ ...game, winner: "X nyert!", gameOver: true });
+        } else if (
+          marks[i + cols - 1] === "X" &&
+          marks[i + (cols - 1) * 2] === "X" &&
+          marks[i + (cols - 1) * 3] === "X" &&
+          marks[i + (cols - 1) * 4] === "X"
+        ) {
+          // Trying to handle the red background styling of the winning cells, but it doesn't work properly, will fix later
+          winArray.push(
+            i,
+            i + (cols - 1),
+            i + (cols - 1) * 2,
+            i + (cols - 1) * 3,
+            i + (cols - 1) * 4
+          );
           console.log(winArray);
           setGame({ ...game, winner: "X nyert!", gameOver: true });
         }
@@ -70,26 +131,55 @@ const GameField = (startingInputs) => {
         // I'm going through the cells first horizontally, then vertically
         // Currently the overflowing lines win as well, will fix it later
         if (
-          (marks[i + 1] === "O" &&
-            marks[i + 2] === "O" &&
-            marks[i + 3] === "O" &&
-            marks[i + 4] === "O") ||
-          (marks[i + 6] === "O" &&
-            marks[i + 12] === "O" &&
-            marks[i + 18] === "O" &&
-            marks[i + 24] === "O") ||
-          (marks[i + 7] === "O" &&
-            marks[i + 14] === "O" &&
-            marks[i + 21] === "O" &&
-            marks[i + 28] === "O") ||
-          (marks[i + 5] === "O" &&
-            marks[i + 10] === "O" &&
-            marks[i + 15] === "O" &&
-            marks[i + 20] === "O")
+          marks[i + 1] === "O" &&
+          marks[i + 2] === "O" &&
+          marks[i + 3] === "O" &&
+          marks[i + 4] === "O"
         ) {
-          // Trying to handle the red background styling of the winning cells, but it doesn't work properly,
-          // will fix later
+          // Trying to handle the red background styling of the winning cells, but it doesn't work properly, will fix later
           winArray.push(i, i + 1, i + 2, i + 3, i + 4);
+          console.log(winArray);
+          setGame({ ...game, winner: "O nyert!", gameOver: true });
+        } else if (
+          marks[i + cols] === "O" &&
+          marks[i + cols * 2] === "O" &&
+          marks[i + cols * 3] === "O" &&
+          marks[i + cols * 4] === "O"
+        ) {
+          // Trying to handle the red background styling of the winning cells, but it doesn't work properly, will fix later
+          winArray.push(i, i + cols, i + cols * 2, i + cols * 3, i + cols * 4);
+          console.log(winArray);
+          setGame({ ...game, winner: "O nyert!", gameOver: true });
+        } else if (
+          marks[i + (cols + 1)] === "O" &&
+          marks[i + (cols + 1) * 2] === "O" &&
+          marks[i + (cols + 1) * 3] === "O" &&
+          marks[i + (cols + 1) * 4] === "O"
+        ) {
+          // Trying to handle the red background styling of the winning cells, but it doesn't work properly, will fix later
+          winArray.push(
+            i,
+            i + (cols + 1),
+            i + (cols + 1) * 2,
+            i + (cols + 1) * 3,
+            i + (cols + 1) * 4
+          );
+          console.log(winArray);
+          setGame({ ...game, winner: "O nyert!", gameOver: true });
+        } else if (
+          marks[i + cols - 1] === "O" &&
+          marks[i + (cols - 1) * 2] === "O" &&
+          marks[i + (cols - 1) * 3] === "O" &&
+          marks[i + (cols - 1) * 4] === "O"
+        ) {
+          // Trying to handle the red background styling of the winning cells, but it doesn't work properly, will fix later
+          winArray.push(
+            i,
+            i + (cols - 1),
+            i + (cols - 1) * 2,
+            i + (cols - 1) * 3,
+            i + (cols - 1) * 4
+          );
           console.log(winArray);
           setGame({ ...game, winner: "O nyert!", gameOver: true });
         }

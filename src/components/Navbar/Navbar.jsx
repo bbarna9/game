@@ -1,9 +1,10 @@
 import React from "react";
 import "./navbar.scss";
 
-const Navbar = () => {
+const Navbar = ({ x, y }) => {
   return (
     <div className="navbar">
+      <h1 className="title">{x}</h1>
       <button className="startButton">
         <a href="/">JÁTÉK INDÍTÁSA</a>
       </button>
@@ -11,6 +12,7 @@ const Navbar = () => {
       <button className="topListButton">
         <a href="/toplist">TOPLISTA</a>
       </button>
+      <h1 className="title">{y}</h1>
     </div>
   );
 };
