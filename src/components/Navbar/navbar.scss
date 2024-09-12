@@ -1,0 +1,59 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  background-color: #6fb1b4;
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffe7d1;
+  font-size: larger;
+
+  .startButton {
+    background-color: #eb6851;
+    width: 150px;
+    height: 40px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    -webkit-box-shadow: 3px 3px 5px -2px rgb(54, 54, 54);
+    -moz-box-shadow: 3px 3px 5px -2px rgb(54, 54, 54);
+    box-shadow: 3px 3px 5px -2px rgb(54, 54, 54);
+    cursor: pointer;
+
+    a {
+      text-decoration: none;
+      color: white;
+      height: 150px;
+      width: 40px;
+      font-family: "OtherText";
+    }
+  }
+
+  .title {
+    font-style: italic;
+    margin-left: 60px;
+    margin-right: 60px;
+    font-family: "Title";
+  }
+
+  .topListButton {
+    background-color: #00cdff;
+    width: 150px;
+    height: 40px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    -webkit-box-shadow: 3px 3px 5px -2px rgb(54, 54, 54);
+    -moz-box-shadow: 3px 3px 5px -2px rgb(54, 54, 54);
+    box-shadow: 3px 3px 5px -2px rgb(54, 54, 54);
+    cursor: pointer;
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-family: "OtherText";
+    }
+  }
+}

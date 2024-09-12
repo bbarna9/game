@@ -1,39 +1,24 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.scss';
+import { useState } from "react";
+import "./App.scss";
+import Game from "./pages/Game/Game.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar.jsx";
+import Toplist from "./pages/Toplist/Toplist.jsx";
+
+import "./fonts/MYRIADPROBOLD.otf";
+import "./fonts/PlasticSansRegular.otf";
+import GameNewBackup from "./pages/Game/GameNewBackup.jsx";
 
 function App() {
-  let arr = new Array(30);
-  for (let i = 0; i < 30; i++) {
-    arr[i] = arr[i] = '';
-  }
-
   return (
-    <div className="mainArea">
-      {/* ----------------- NAVBAR ------------------- */}
-      <div className="navbar">
-        <button className="startButton">JÁTÉK INDÍTÁSA</button>
-        <h1 className="title">AMŐBA</h1>
-        <button className="topListButton">TOPLISTA</button>
-      </div>
-      {/* ----------------- GAME FIELD ------------------- */}
-      <div className="gridField">
-        {arr.map((box, i) => (
-          <div
-            className="gridCell"
-            key={i}
-            onClick={() => {
-              console.log(box);
-              box = 'X';
-              console.log(box);
-            }}
-          >
-            {box === 'O' ? 'O' : ' '}
-          </div>
-        ))}
-      </div>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        {/* <Route exact path="/" element={<Game />} /> */}
+        <Route exact path="/" element={<GameNewBackup />} />
+        <Route path="/toplist" element={<Toplist />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

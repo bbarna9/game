@@ -1,0 +1,103 @@
+.mainArea {
+  background-color: #007895;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+
+  .gridField {
+    //display: flex;
+    //flex-wrap: wrap;
+    display: grid;
+    // max-width: 360px;
+    // grid-template-columns: repeat(6, 1fr);
+    // grid-template-rows: repeat(5, 1fr);
+    border: 2px solid #4f5050;
+
+    .gridCell {
+      width: 60px;
+      height: 60px;
+      background-color: #2e2e2e;
+      border: 2px solid #4f5050;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      font-family: "OtherText";
+
+      &.O {
+        color: #00cdff;
+      }
+
+      &.X {
+        color: #ffe8d2;
+      }
+
+      &.winner {
+        background-color: #ac2a2a;
+        color: #ff8d83;
+        //border-right: #d74242;
+        //border-left: #d74242;
+      }
+    }
+  }
+
+  .gameOverHeader {
+    font-family: "Title";
+    font-size: 100px;
+    width: fit-content;
+    margin: 0;
+    padding-top: 50px;
+  }
+
+  .newGameButton {
+    background-color: #eb6851;
+    width: 200px;
+    height: 40px;
+    margin: 0;
+    border: none;
+    color: white;
+    font-weight: bold;
+    -webkit-box-shadow: 3px 3px 5px -2px rgb(54, 54, 54);
+    -moz-box-shadow: 3px 3px 5px -2px rgb(54, 54, 54);
+    box-shadow: 3px 3px 5px -2px rgb(54, 54, 54);
+    cursor: pointer;
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-family: "OtherText";
+    }
+  }
+
+  .startingInputs {
+    display: flex;
+    flex-direction: column;
+    font-family: "OtherText";
+    height: 80vh;
+    width: 80vw;
+    color: black;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+
+      input,
+      button {
+        border: none;
+        border-radius: 3px;
+        height: 20px;
+        outline: none;
+      }
+    }
+  }
+}
