@@ -56,6 +56,14 @@
     width: fit-content;
     margin: 0;
     padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // Adjusting styling for phone screens, found this specific 620px in an article online, this works the best
+    @media (max-width: 620px) {
+      font-size: 70px;
+    }
   }
 
   .newGameButton {
@@ -184,6 +192,10 @@
           .notAvailable {
             opacity: 70%;
             filter: grayscale(100%);
+          }
+
+          img {
+            cursor: pointer;
           }
         }
       }

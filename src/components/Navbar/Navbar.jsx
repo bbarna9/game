@@ -15,7 +15,7 @@ const Navbar = ({ x, y, xChar, yChar }) => {
             style={{
               width: "50px",
               height: "50px",
-              display: `${xChar === "" ? "none" : "flex"}`,
+              display: `${x === "" ? "none" : "flex"}`,
             }}
           />
         </h1>
@@ -33,7 +33,7 @@ const Navbar = ({ x, y, xChar, yChar }) => {
             style={{
               width: "50px",
               height: "50px",
-              display: `${xChar === "" ? "none" : "flex"}`,
+              display: `${y === "" ? "none" : "flex"}`,
             }}
           />
         </h1>
