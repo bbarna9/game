@@ -123,6 +123,7 @@
       }
     }
 
+    // Adjusting styling for phone screens, found this specific 620px in an article online, this works the best
     @media (min-width: 620px) {
       display: none;
     }
@@ -151,6 +152,40 @@
         border-radius: 3px;
         height: 20px;
         outline: none;
+      }
+
+      .startButton {
+        margin-top: 20px;
+        background-color: #eb6851;
+        width: 100%;
+        height: 40px;
+        border: none;
+        color: white;
+        font-weight: bold;
+        -webkit-box-shadow: 3px 3px 5px -2px rgb(54, 54, 54);
+        -moz-box-shadow: 3px 3px 5px -2px rgb(54, 54, 54);
+        box-shadow: 3px 3px 5px -2px rgb(54, 54, 54);
+        cursor: pointer;
+        border-radius: 0;
+      }
+
+      .characterSelector {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+
+        button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: transparent;
+          border: none;
+
+          .notAvailable {
+            opacity: 70%;
+            filter: grayscale(100%);
+          }
+        }
       }
     }
   }

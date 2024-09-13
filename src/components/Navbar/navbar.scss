@@ -37,6 +37,7 @@
         font-family: "OtherText";
       }
 
+      // Adjusting styling for phone screens, found this specific 620px in an article online, this works the best
       @media (max-width: 620px) {
         display: none;
       }
@@ -47,6 +48,7 @@
       margin-right: 60px;
       font-family: "Title";
 
+      // Adjusting styling for phone screens, found this specific 620px in an article online, this works the best
       @media (max-width: 620px) {
         margin: 0;
       }
@@ -70,11 +72,13 @@
         font-family: "OtherText";
       }
 
+      // Adjusting styling for phone screens, found this specific 620px in an article online, this works the best
       @media (max-width: 620px) {
         display: none;
       }
     }
 
+    // Adjusting styling for phone screens, found this specific 620px in an article online, this works the best
     @media (max-width: 620px) {
       //background-color: red;
     }

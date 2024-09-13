@@ -1,5 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
+import bear from "/img/bear.svg";
+import wolf from "/img/wolf.svg";
+import panda from "/img/panda.svg";
 
 const GameField = (startingInputs) => {
   const cols = startingInputs.col;
@@ -195,7 +198,32 @@ const GameField = (startingInputs) => {
 
   return (
     <>
-      <h1 className="gameOverHeader">{game.winner}</h1>
+      <h1 className="gameOverHeader">
+        {game.winner}
+        {game.winner !== "" && (
+          <img
+            src={
+              game.winner === "X nyert!"
+                ? startingInputs.xChar === "bear"
+                  ? bear
+                  : startingInputs.xChar === "wolf" && wolf
+                : startingInputs.xChar === "panda"
+                ? panda
+                : startingInputs.yChar === "bear"
+                ? bear
+                : startingInputs.yChar === "wolf"
+                ? wolf
+                : panda
+            }
+            alt="charImg"
+            style={{
+              width: "70px",
+              height: "70px",
+              marginLeft: "30px",
+            }}
+          />
+        )}
+      </h1>
       <div
         className="gridField"
         style={{
