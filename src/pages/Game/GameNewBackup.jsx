@@ -15,6 +15,10 @@ const GameNewBackup = () => {
     y: "",
   });
 
+  const screenSize = window.innerWidth;
+  const maxCols = screenSize > 620 ? 24 : 9;
+  const maxRows = screenSize > 620 ? 9 : 17;
+
   const handleStart = (e) => {
     e.preventDefault();
     const gameSize =
@@ -62,12 +66,14 @@ const GameNewBackup = () => {
                 name="colNum"
                 placeholder="Oszlopok száma"
                 required
+                max={maxCols}
               />
               <input
                 type="number"
                 name="rowNum"
                 placeholder="Sorok száma"
                 required
+                max={maxRows}
               />
             </div>
             <button type="submit" style={{ marginTop: "20px" }}>

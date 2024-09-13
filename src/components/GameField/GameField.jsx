@@ -12,7 +12,11 @@ const GameField = (startingInputs) => {
     winner: "",
   });
 
-  const width = cols * 60 + "px";
+  const screenSize = window.innerWidth;
+  const cellSize = screenSize > 620 ? 60 : 40;
+  const fieldSize = cellSize * cols;
+
+  const width = fieldSize + "px";
 
   // Handling cell click eveng
 
@@ -207,13 +211,21 @@ const GameField = (startingInputs) => {
               winArray.includes(i) && "winner"
             }`}
             key={i}
-            style={{}}
+            style={{ height: cellSize, width: cellSize }}
             onClick={() => cellClicked(i)}
             disabled={box === "X" || box === "O" || game.gameOver}
           >
             {box}
           </button>
         ))}
+      </div>
+      <div className="buttons">
+        <button className="startButton">
+          <a href="/">JÁTÉK INDÍTÁSA</a>
+        </button>
+        <button className="topListButton">
+          <a href="/toplist">TOPLISTA</a>
+        </button>
       </div>
       {game.gameOver && (
         <button
